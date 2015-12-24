@@ -4,34 +4,28 @@ namespace Behaviors.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using System.Collections.Generic;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Behaviors.Context.BehaviorContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Behaviors.Context.BehaviorsContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Behaviors.Context.BehaviorContext context)
+        protected override void Seed(Behaviors.Context.BehaviorsContext context)
         {
-            var behaviors = new HashSet<Entities.Behavior>();
-            var behavior = context.Behaviors.Create();
+            //  This method will be called after migrating to the latest version.
 
-            behavior.Description = "Self-induced frustration";
-            behaviors.Add(behavior);
-
-            behavior = context.Behaviors.Create();
-            behavior.Description = "Sibling-induced frustration";
-            behaviors.Add(behavior);
-
-            behavior = context.Behaviors.Create();
-            behavior.Description = "Parental-induced frustration";
-            behaviors.Add(behavior);
-
-            context.Behaviors.AddOrUpdate(behaviors.ToArray());
-
-            context.SaveChanges();
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data. E.g.
+            //
+            //    context.People.AddOrUpdate(
+            //      p => p.FullName,
+            //      new Person { FullName = "Andrew Peters" },
+            //      new Person { FullName = "Brice Lambson" },
+            //      new Person { FullName = "Rowan Miller" }
+            //    );
+            //
         }
     }
 }

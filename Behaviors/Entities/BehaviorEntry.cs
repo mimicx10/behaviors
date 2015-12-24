@@ -13,7 +13,7 @@ namespace Behaviors.Entities
         public virtual DateTime DateAndTime { get; set; }
         public virtual int DurationMinutes { get; set; }
         public virtual int DurationSeconds { get; set; }
-        
+
         public virtual Child Child { get; set; }
         public virtual Behavior Behavior { get; set; }
     }
